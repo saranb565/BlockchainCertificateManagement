@@ -88,7 +88,7 @@ FIREBASE_STORAGE_BUCKET = "<Your Firebase Storage Bucket>"
 FIREBASE_MESSAGING_SENDER_ID = "<Your Firebase Messaging Sender ID>"
 FIREBASE_APP_ID = "<Your Firebase App ID>"
 institute_email = "institute@gmail.com"
-institute_password = "123456"
+institute_password = "0000"
 ```
 
 ---
