@@ -171,7 +171,7 @@ Want to contribute? Follow these steps:
 1. **Fork** the repo.
 2. **Clone** it locally:
    ```sh
-   git clone https://github.com/your-username/BlockchainCertificateManagement.git
+   git clone https://github.com/saranb565/BlockchainCertificateManagement.git
    ```
 3. **Create a feature branch**:
    ```sh
