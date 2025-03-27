@@ -1,126 +1,192 @@
-# Certificate Validation using Blockchain
+# Certificate Validation System using Blockchain
 
 ---
 
 ## Introduction
 
-This project provides a Blockchain based solution for generating and verifying digital certificates. The certificate information (uid, candidate_name, course_name, org_name, ipfs_hash) is stored on the blockchain. First, the certificate pdf is generated and stored onto IPFS using Pinata service. Then, the IPFS hash obtained is stored on the blockchain along with other information.
+Welcome to the **Certificate Validation System**, a decentralized and secure solution for generating, storing, and verifying digital certificates using **Blockchain technology**. Traditional certificate validation methods are prone to forgery and require centralized authorities for verification. This project leverages **Ethereum Smart Contracts and IPFS (InterPlanetary File System)** to ensure certificates are **immutable, tamper-proof, and verifiable from anywhere in the world**.
 
-The system comprises of 2 main entities:
-- **Institute**: Responsible for generating and issuing certificates. Has the functionality to generate and view certificates.
+### **How It Works**
+1. **Certificate Generation**: The institute generates certificates, which are then stored securely on **IPFS (via Pinata)**.
+2. **Blockchain Storage**: The certificate details (such as UID, candidate name, course name, organization, and IPFS hash) are recorded on the Ethereum blockchain.
+3. **Verification**: A verifier can authenticate certificates by either uploading the PDF or entering the certificate ID.
 
-- **Verifier**: Responsible for verifying certificates. Has the functionality to verify certificates by either uploading a certificate pdf or by inputting the certificate id.
+The system consists of two main roles:
+- **Institute**: Responsible for generating, issuing, and managing certificates.
+- **Verifier**: Can verify certificates using the blockchain and uploaded PDFs.
 
 ---
 
 ## Features
 
-- **Smart Contract:** Utilizes a Solidity smart contract to manage and store certificate details on the Ethereum blockchain.
-- **IPFS Integration:** Stores certificate PDFs on IPFS via Pinata for decentralized and secure file storage.
-- **Firebase Authentication:** Uses Firebase for authentication.
-- **Streamlit App:** Provides a user-friendly interface for generating and verifying certificates.
+✅ **Immutable Smart Contracts** – Certificates are stored on the **Ethereum blockchain**, preventing fraud.
+✅ **Decentralized File Storage** – Uses **IPFS via Pinata** to store certificate PDFs securely.
+✅ **Web Interface with Streamlit** – A user-friendly **Streamlit-powered UI** for managing certificates.
+✅ **Firebase Authentication** – Ensures only authorized users can issue or verify certificates.
+✅ **Tamper-Proof Validation** – Every certificate is cryptographically secured and easily verifiable.
+✅ **GANACHE Integration** – Simulates an Ethereum network for testing the smart contract locally.
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-Clone the repository using the command:
+### Clone the Repository
 ```sh
 git clone https://github.com/saranb565/BlockchainCertificateManagement.git
+cd BlockchainCertificateManagement
 ```
 
 ---
 
-## Local Setup
+## 🛠 Prerequisites
+Ensure you have the following installed:
 
-### Prerequisites
+### **1️⃣ Node.js (>= 16.0.0 recommended)**
+- Install Node.js from [Node.js official website](https://nodejs.org/)
+```sh
+node -v # To check Node.js version
+```
 
-- **Node version >= 21.0.0**
-Truffle requires node version 16 or higher. The node version on my machine on which I tested this project was 21.0.0. You can try a lower node version (>=16.0).
+### **2️⃣ Python (>= 3.9.10 recommended)**
+- Install Python from [Python official website](https://www.python.org/)
+```sh
+python --version # To check Python version
+```
 
-- **Python version >= 3.9.10**
-    Python version 3.9.10 or higher is recommended but other versions may also work.
+### **3️⃣ Truffle and Ganache-cli**
+```sh
+npm install -g truffle
+npm install -g ganache-cli
+```
 
-- **Globally installed packages for Truffle and Ganache-cli**
+### **4️⃣ Install Python Dependencies**
+```sh
+pip install -r application/requirements.txt
+```
 
-    ```sh
-    npm install -g truffle
-    ```
-    ```sh
-    npm install -g ganache-cli
-    ```
-
-- **Python packages**
-    In the project's root directory, exececute the command:
-    ```sh
-    pip install -r application/requirements.txt
-    ```
-    It is recommended to create a virtual environment and then install the requirements and run the streamlit application in that virtual environment.
-
-- **Firebase project setup**
-    Create a project on [Firebase Console](https://console.firebase.google.com/). This will be used to setup an authentication service in the project. Enable email/password sign in method under Authentication in the Build section.
-    Go to project settings. Add new app. Note the following details in a .env file inside the project's root directory.
-    ```sh
-    FIREBASE_API_KEY
-    FIREBASE_AUTH_DOMAIN
-    FIREBASE_DATABASE_URL (Set this to "")
-    FIREBASE_PROJECT_ID
-    FIREBASE_STORAGE_BUCKET
-    FIREBASE_MESSAGING_SENDER_ID
-    FIREBASE_APP_ID
-    ```
-
-- **Pinata account setup**
-    Create an account on [Pinata](https://app.pinata.cloud/). Go to the API keys section and generate a new key. Note the API key and secret key in .env file.
-
-- **.env file**
-    Finally your .env file should contain the following things:
-
-    ```sh
-    PINATA_API_KEY = "<Your Pinata API key>"
-    PINATA_API_SECRET = "<Your Pinata Secret Key>"
-    FIREBASE_API_KEY = "<Your Firebase API key>"
-    FIREBASE_AUTH_DOMAIN = "<Your Firebase auth domain>"
-    FIREBASE_DATABASE_URL = ""
-    FIREBASE_PROJECT_ID = "<Your Firebase project id>"
-    FIREBASE_STORAGE_BUCKET = "<Your Firebase Storage Bucket>"
-    FIREBASE_MESSAGING_SENDER_ID = "<Your Firebase messaging sender id>"
-    FIREBASE_APP_ID = "<Your Firebase app id>"
-    institute_email = "institute@gmail.com" # Feel free to modify this
-    institute_password = "123456" # Feel free to modify this
-    ```
-    Note: This institute email and password in the .env file will be used to login as Institute inside the app.
-
-### Running the project
-
-1. Open a terminal anywhere and start the Ganache blockchain.
-    ```
-    ganache-cli -h 127.0.0.1 -p 8545
-    ```
-
-2. Open a new terminal in the project's root directory and execute the following command to compile and deploy the smart contracts.
-    ```sh
-    truffle migrate
-    ```
-
-3. Change the working directory to application directory inside the project's root directory.
-    ```sh
-    cd application
-    ```
-
-4. Launch the streamlit app.
-    ```sh
-    streamlit run app.py
-    ```
-
-5. You can now view the app on your browser running on [localhost:8501](https:localhost:8501).
-
-6. To stop the application, press Ctrl+C.
+> **Tip:** Use a **virtual environment** to avoid dependency issues:
+```sh
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r application/requirements.txt
+```
 
 ---
 
-    Note: The insitute email id is "institute@gmail.com" and password is "123456". You will require this for logging in as Institute for the process of Certificate generation.
+## 🔐 Setting Up Firebase Authentication
+1. Go to [Firebase Console](https://console.firebase.google.com/).
+2. Create a new project and navigate to **Authentication → Sign-in method**.
+3. Enable **Email/Password authentication**.
+4. Add a new web app in **Project Settings**.
+5. Copy the following details into a `.env` file in the project's root directory:
+
+```sh
+FIREBASE_API_KEY = "<Your Firebase API Key>"
+FIREBASE_AUTH_DOMAIN = "<Your Firebase Auth Domain>"
+FIREBASE_DATABASE_URL = ""
+FIREBASE_PROJECT_ID = "<Your Firebase Project ID>"
+FIREBASE_STORAGE_BUCKET = "<Your Firebase Storage Bucket>"
+FIREBASE_MESSAGING_SENDER_ID = "<Your Firebase Messaging Sender ID>"
+FIREBASE_APP_ID = "<Your Firebase App ID>"
+institute_email = "institute@gmail.com"
+institute_password = "123456"
+```
 
 ---
 
+## 📂 IPFS and Pinata Setup
+1. Sign up on [Pinata](https://app.pinata.cloud/).
+2. Go to **API Keys** and generate a new key.
+3. Add the following details to the `.env` file:
+
+```sh
+PINATA_API_KEY = "<Your Pinata API Key>"
+PINATA_API_SECRET = "<Your Pinata Secret Key>"
+```
+
+---
+
+## 🚀 Running the Project
+
+### **Step 1: Start Ganache (Ethereum Local Blockchain)**
+```sh
+ganache-cli -h 127.0.0.1 -p 8545
+```
+
+### **Step 2: Deploy Smart Contracts**
+```sh
+truffle migrate
+```
+
+### **Step 3: Launch the Streamlit App**
+```sh
+cd application
+streamlit run app.py
+```
+
+Now, open [localhost:8501](http://localhost:8501) in your browser to access the app! 🎉
+
+---
+
+## 📜 Usage Guide
+### **📝 Generating a Certificate**
+1. Log in as an **Institute** using:
+   - Email: `institute@gmail.com`
+   - Password: `123456`
+2. Enter the details of the candidate and course.
+3. The certificate is generated, stored on **IPFS**, and its **hash** is recorded on the blockchain.
+
+### **🔍 Verifying a Certificate**
+1. Upload the certificate PDF or enter the **Certificate ID**.
+2. The system fetches the hash from the blockchain and compares it with the **IPFS** hash.
+3. If the data matches, the certificate is **valid**!
+
+---
+
+## 🎯 Future Enhancements
+- **QR Code Generation:** Embed blockchain transaction ID in the certificate.
+- **Mobile App Integration:** A dedicated app for issuing and verifying certificates.
+- **Layer 2 Scaling Solutions:** Reduce Ethereum gas fees using **Polygon or Optimism**.
+
+---
+
+## 🛠 Technologies Used
+- **Frontend:** Streamlit (Python-based UI framework)
+- **Backend:** Flask
+- **Blockchain:** Ethereum (Ganache for local development)
+- **Smart Contracts:** Solidity
+- **Storage:** IPFS (via Pinata)
+- **Authentication:** Firebase
+- **Development Tools:** Truffle, Ganache-cli
+
+---
+
+## 🤝 Contribution Guidelines
+Want to contribute? Follow these steps:
+1. **Fork** the repo.
+2. **Clone** it locally:
+   ```sh
+   git clone https://github.com/your-username/BlockchainCertificateManagement.git
+   ```
+3. **Create a feature branch**:
+   ```sh
+   git checkout -b feature-new
+   ```
+4. **Make changes and commit**:
+   ```sh
+   git commit -m "Added new feature"
+   ```
+5. **Push and create a pull request**:
+   ```sh
+   git push origin feature-new
+   ```
+
+---
+
+## 📧 Contact
+For queries or suggestions, reach out at: **saranb565@gmail.com**
+
+---
+
+**⭐ Don't forget to star the repo if you found it useful! ⭐**
 
