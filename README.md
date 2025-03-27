@@ -149,11 +149,11 @@ Now, open [localhost:8501](http://localhost:8501) in your browser to access the 
 Below are screenshots showcasing the certificate generation and verification process:
 
 <img src="https://drive.google.com/uc?id=14xsoq85e_8wGNPQoeMEk-dxzK7YPx1RK" alt="Screenshot 1" width="600">
-
+<br>
 <img src="https://drive.google.com/uc?id=1m23gRzSMRO5rxVHv2uIRWmSGI7OR5nQO" alt="Screenshot 2" width="600">
-
+<br>
 <img src="https://drive.google.com/uc?id=1d3Rsh5bAHu5NXdYKiYC6iIS0kvMcfDvg" alt="Screenshot 3" width="600">
-
+<br>
 <img src="https://drive.google.com/uc?id=1elfqErPAvHPloUdEtAYyN8eoLf9OFCMc" alt="Screenshot 4" width="600">
 
 <img src="https://drive.google.com/uc?id=1WRCG24ahtdbFyZvOK-wMnof1ie1eEZOG" alt="Screenshot 5" width="600">
